@@ -1,0 +1,46 @@
+<!doctype html>
+
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/person.css') }}">
+<title>Hello from Flask</title>
+<body>
+  <form action='{{ url_for("handleCreatePerson") }}' enctype="multipart/form-data" method="POST">
+    <input type="submit" value="submit">
+    <div id="nameBox">
+      <h1>Name: <input type='text' name='name' required='true'></h1>
+    </div>
+    <div id="mainBox">
+      <div id="stats">
+        {% for i in ["str", "dex", "con", "int", "wis", "chr"] %}
+          <div id='statBox'>
+            <div id='statName'>
+             {{ i }} 
+            </div>
+            <div id='statVal'>
+              <input type = 'text' name = {{ i }}>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div id="center">
+        <div id="portrait">
+          <input name="photo" type="file">
+        </div>
+        <div id="occupation">
+          <h3>City: <input type='text' name='city'></h3>
+          <h4>Occupation: <input type='text' name='occupation'></h4>
+          
+        </div>
+      </div>
+      <div id="details">
+        <p>Race: <input type='text' name='race'></p>
+        <p>Alignment: <input type='text' name='alignment'></p>
+        <p>Sex: <input type='text' name='sex'></p>
+        <p>Age: <input type='text' name='age'></p>
+      </div>
+    </div>
+    <div id="bio">
+      <textarea name="bio" style="width: 100%; height: 250px; margin: 0px; padding: 0px; border: 0px;"></textarea>
+    </div>
+  </form>
+</body>
+</html>

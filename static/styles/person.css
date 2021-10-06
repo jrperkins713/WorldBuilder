@@ -1,0 +1,148 @@
+body {
+
+    font-size: 10pt;
+  
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+  
+    color: black;
+  
+    line-height: 14pt;
+  
+    padding-left: 5pt;
+  
+    padding-right: 5pt;
+  
+    padding-top: 5pt;
+
+    text-align: center;
+  
+  }
+  
+  
+  h1 {
+  
+    font: 48pt Verdana, Geneva, Arial, Helvetica, sans-serif;
+  
+    font-weight: bold;
+
+    color: black;
+  
+    line-height: 20pt;
+  
+  }
+  
+  
+  p.subheader {
+  
+    font-weight: bold;
+  
+    color: #593d87;
+  
+  }
+  
+  
+  img {
+    
+    margin-left: auto;
+    overflow: hidden;
+    margin-right: auto;
+    padding: 0px;
+    height: 100%;
+  }
+  
+  
+  a {
+  
+    text-decoration: none;
+  
+  }
+  
+  
+  a:link, a:visited {
+  
+    color: #8094d6;
+  
+  }
+  
+  
+  a:hover, a:active {
+  
+    color: #FF9933;
+  
+  }
+  
+  
+  div.footer {
+  
+    font-size: 9pt;
+  
+    font-style: italic;
+  
+    line-height: 12pt;
+  
+    text-align: center;
+  
+    padding-top: 30pt;
+  
+  }
+
+  div {
+    outline: 1px solid black;
+    padding: 0px;
+    margin: 0px;
+    
+    
+  }
+
+  #mainBox {
+    height: 500px;
+  }
+  #stats {
+    float: left;
+    width: 33%;
+    height: 100%;
+  }
+
+  #center {
+    position: relative;
+    align-content: center;
+    float: left;
+    width: 34%;
+    height: 100%;
+  }
+
+  #portrait {
+    height: 75%;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  #occupation {
+    position: absolute;
+    height: 25%;
+    width: 100%;
+    bottom: 0px;
+    /*border-top: black solid 10px;*/
+  }
+
+  #details {
+    width: 33%;
+    float: right;
+    height: 100%;
+  }
+
+  #stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  #statBox {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 7px;
+    margin-bottom: 7px;
+  }
+  
+

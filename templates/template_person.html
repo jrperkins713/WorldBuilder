@@ -1,0 +1,52 @@
+<!doctype html>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/person.css') }}">
+<title>Hello from Flask</title>
+<body>
+  <form action='{{ url_for("servePersonForm") }}'>
+    <div id='createButtonBox'></div>
+      <input id='createPerson' type="submit" value="Create New Person">
+    </div>
+  </form>
+  <form action='{{ url_for("handleDeletePerson", name = person.name) }}' method="POST">
+    <div id='deleteButtonBox'></div>
+      <input id='deletePerson' type="submit" value="Delete Person">
+    </div>
+  </form>
+  <div id="nameBox">
+    <h1>{{ person.name }}</h1>
+  </div>
+  <div id="mainBox">
+    <div id="stats">
+      {% for stat in person.stats %}
+        <div id='statBox'>
+          <div id='statName'>
+            {{ stat }}
+          </div>
+          <div id='statVal'>
+            {{ person.stats[stat] }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div id="center">
+      <div id="portrait">
+        <img id="photo" class="center" src="{{ url_for('static',filename='media/'+person.name+'.jpg') }}">
+      </div>
+      <div id="occupation">
+        <h3>{{ person.city }}</h3>
+        <h4>{{ person.occupation }} </h4>
+        
+      </div>
+    </div>
+    <div id="details">
+      <p>Race: {{ person.race }}</p>
+      <p>Alignment: {{ person.alignment }}</p>
+      <p>Sex: {{ person.sex }}</p>
+      <p>Age: {{ person.age }}</p>
+    </div>
+  </div>
+  <div id="bio">
+    {{ person.bio }}
+  </div>
+</body>
+</html>

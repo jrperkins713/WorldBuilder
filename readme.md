@@ -1,0 +1,1 @@
+Worldbuilder is a wiki of DnD characters made using Flask. All data is stored in a local database.

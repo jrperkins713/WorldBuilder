@@ -12,6 +12,11 @@
       <input id='deletePerson' type="submit" value="Delete Person">
     </div>
   </form>
+  <form action='{{ url_for("serveEditPersonForm", name = person.name) }}' method = "POST">
+    <div id='editButtonBox'></div>
+      <input id='editPerson' type="submit" value="Edit Person">
+    </div>
+  </form>
   <div id="nameBox">
     <h1>{{ person.name }}</h1>
   </div>

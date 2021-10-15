@@ -29,15 +29,21 @@ def homepage():
 
 @app.route("/create-person/")
 def servePersonForm():
-    return render_template('form_person.html')
+    return render_template('form_create_person.html', person = False, createNew = True)
+
+@app.route("/edit-person/<name>/", methods=['POST'])
+def serveEditPersonForm(name):
+    print("hit edit person")
+    return render_template('form_create_person.html', person = queryPerson(name).__dict__, createNew = False)
 
 @app.route("/handleDeletePerson/<name>/", methods=['POST'])
 def handleDeletePerson(name):
     dropPerson(name)
     return redirect(url_for('homepage'))
 
-@app.route("/handleCreatePerson/", methods=['POST'])
-def handleCreatePerson():
+@app.route("/handleCreatePerson/<createNew>", methods=['POST'])
+def handleCreatePerson(createNew):
+    print("createNew = " + createNew)
     newPerson = Person.Person()
     newPerson.copyDict(request.form)
     image = request.files.get('photo', '')
@@ -47,13 +53,14 @@ def handleCreatePerson():
         filename = secure_filename(newPerson.name + ".jpg")
         print("saving file: " + filename)
         image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    storePerson(newPerson)
+    storePerson(newPerson, createNew)
     return redirect(url_for('display_person', name = newPerson.name))
 
 def makePerson(name):
     return Person.Person(name, "Topsfield", "Barkeep")
 
-def storePerson(person):
+def storePerson(person, createNew):
+    createNew = createNew == "True"
     try:
         f = open("creds.json")
         creds = json.load(f)
@@ -81,7 +88,12 @@ def storePerson(person):
                         person.alignment + "','" + \
                         person.sex + "','" + \
                         person.age + "');"
+            print(createNew)
+            print(type(createNew))
+            if(not createNew):
+                query = query.replace("INSERT", "REPLACE")
             with connection.cursor() as cursor:
+                print(query)
                 cursor.execute(query)
                 connection.commit()
     except Error as e:

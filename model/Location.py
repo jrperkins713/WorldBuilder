@@ -1,7 +1,7 @@
 class Location:
 
-    def __init__(self, name = 'Uknown', 
-                 population = 'Uknown',
+    def __init__(self, name = 'Unknown', 
+                 population = 'Unknown',
                  notablePeople = []):
         self.name = name
         self.population = population

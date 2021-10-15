@@ -3,20 +3,20 @@
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/person.css') }}">
 <title>Hello from Flask</title>
 <body>
-  <form action='{{ url_for("handleCreatePerson") }}' enctype="multipart/form-data" method="POST">
+  <form action='{{ url_for("handleCreatePerson", createNew = createNew) }}' enctype="multipart/form-data" method="POST">
     <input type="submit" value="submit">
     <div id="nameBox">
-      <h1>Name: <input type='text' name='name' required='true'></h1>
+      <h1>Name: <input type='text' name='name' required='true' value = {{ person.name }}></h1>
     </div>
     <div id="mainBox">
       <div id="stats">
-        {% for i in ["str", "dex", "con", "int", "wis", "chr"] %}
+        {% for i in person.stats %}
           <div id='statBox'>
             <div id='statName'>
              {{ i }} 
             </div>
             <div id='statVal'>
-              <input type = 'text' name = {{ i }}>
+              <input type = 'text' name = {{ i }} value= {{ person.stats[i] }}>
             </div>
           </div>
         {% endfor %}
@@ -26,16 +26,16 @@
           <input name="photo" type="file">
         </div>
         <div id="occupation">
-          <h3>City: <input type='text' name='city'></h3>
-          <h4>Occupation: <input type='text' name='occupation'></h4>
+          <h3>City: <input type='text' name='city' value = {{ person.city }}></h3>
+          <h4>Occupation: <input type='text' name='occupation' value= {{ person.occupation }}></h4>
           
         </div>
       </div>
       <div id="details">
-        <p>Race: <input type='text' name='race'></p>
-        <p>Alignment: <input type='text' name='alignment'></p>
-        <p>Sex: <input type='text' name='sex'></p>
-        <p>Age: <input type='text' name='age'></p>
+        <p>Race: <input type='text' name='race' value = {{ person.race }}></p>
+        <p>Alignment: <input type='text' name='alignment' value = {{ person.alignment }}></p>
+        <p>Sex: <input type='text' name='sex' value = {{ person.sex }}></p>
+        <p>Age: <input type='text' name='age' value = {{ person.age }}></p>
       </div>
     </div>
     <div id="bio">

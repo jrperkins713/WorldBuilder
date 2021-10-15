@@ -2,8 +2,8 @@ class Person:
 
    
 
-   def __init__(self, name = 'Uknown', 
-                 city = 'Uknown', occupation = 'Uknown', 
+   def __init__(self, name = 'Unknown', 
+                 city = 'Unknown', occupation = 'Unknown', 
                  stats =  {
                     'str': '0',
                     'dex': '0',
@@ -13,8 +13,8 @@ class Person:
                     'chr': '0'
                  },
                  bio = "Not much is known about this person", 
-                 race="Uknown", alignment = "Uknown", 
-                 sex = "Uknown", age = "Uknown"):
+                 race="Unknown", alignment = "Unknown", 
+                 sex = "Unknown", age = "Unknown"):
       self.name = name
       self.city = city
       self.occupation = occupation

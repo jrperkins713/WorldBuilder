@@ -6,7 +6,7 @@
   <form action='{{ url_for("handleCreatePerson", createNew = createNew) }}' enctype="multipart/form-data" method="POST">
     <input type="submit" value="submit">
     <div id="nameBox">
-      <h1>Name: <input type='text' name='name' required='true' value = {{ person.name }}></h1>
+      <h1>Name: <input type='text' name='name' required='true' value = '{{ person.name }}''></h1>
     </div>
     <div id="mainBox">
       <div id="stats">
@@ -16,7 +16,7 @@
              {{ i }} 
             </div>
             <div id='statVal'>
-              <input type = 'text' name = {{ i }} value= {{ person.stats[i] }}>
+              <input type = 'text' name = '{{ i }}'' value= '{{ person.stats[i] }}''>
             </div>
           </div>
         {% endfor %}
@@ -26,20 +26,25 @@
           <input name="photo" type="file">
         </div>
         <div id="occupation">
-          <h3>City: <input type='text' name='city' value = {{ person.city }}></h3>
-          <h4>Occupation: <input type='text' name='occupation' value= {{ person.occupation }}></h4>
+          <h3>City: <input type='text' name='city' value = '{{ person.city }}''></h3>
+          <h4>Occupation: <input type='text' name='occupation' value= '{{ person.occupation }}''></h4>
           
         </div>
       </div>
       <div id="details">
-        <p>Race: <input type='text' name='race' value = {{ person.race }}></p>
-        <p>Alignment: <input type='text' name='alignment' value = {{ person.alignment }}></p>
-        <p>Sex: <input type='text' name='sex' value = {{ person.sex }}></p>
-        <p>Age: <input type='text' name='age' value = {{ person.age }}></p>
+        <p><b>Race:</b> <input type='text' name='race' value = "{{ person.race }}"></p>
+        <p><b>Bonds:</b></p>
+        <textarea name = 'bonds'>{{ person.bonds }}</textarea>
+        <p><b>Ideals:</b></p>
+        <textarea name = 'ideals'>{{ person.ideals }}</textarea> 
+        <p><b>Flaws:</b></p>
+        <textarea name = 'flaws'>{{ person.flaws }}</textarea>
+        <p><b>Sex:</b>: <input type='text' name='sex' value = '{{ person.sex }}''></p>
+        <p><b>Age:</b>: <input type='text' name='age' value = '{{ person.age }}''></p>
       </div>
     </div>
     <div id="bio">
-      <textarea name="bio" style="width: 100%; height: 250px; margin: 0px; padding: 0px; border: 0px;"></textarea>
+      <textarea name="bio" style="width: 100%; height: 250px; margin: 0px; padding: 0px; border: 0px;">{{person.bio}}</textarea>
     </div>
   </form>
 </body>

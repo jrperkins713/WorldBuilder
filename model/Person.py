@@ -13,7 +13,8 @@ class Person:
                     'chr': '0'
                  },
                  bio = "Not much is known about this person", 
-                 race="Unknown", alignment = "Unknown", 
+                 race="Unknown", flaws = "Unknown", 
+                 bonds = "Unknown", ideals = "Unknown",
                  sex = "Unknown", age = "Unknown"):
       self.name = name
       self.city = city
@@ -21,7 +22,9 @@ class Person:
       self.stats = stats
       self.bio = bio
       self.race = race
-      self.alignment = alignment
+      self.flaws = flaws
+      self.bonds = bonds
+      self.ideals = ideals
       self.sex = sex
       self.age = age
 
@@ -30,9 +33,9 @@ class Person:
          if(mydict[key] == ''):
             continue
          if key in self.stats.keys():
-            self.stats[key] = mydict[key]
+            self.stats[key] = mydict[key].replace("'", "''")
          else:
-            setattr(self, key, mydict[key])
+            setattr(self, key, mydict[key].replace("'", "''"))
 
 
     

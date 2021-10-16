@@ -72,7 +72,7 @@ def storePerson(person, createNew):
             query = "INSERT INTO my_schema.characters" + \
                         "(`name`, `location`, `occupation`,"+ \
                         "`str`, `dex`, `con`, `int`, `wis`, `chr`,"+ \
-                        "`bio`, `race`, `alignment`, `sex`, `age`) "+ \
+                        "`bio`, `race`, `sex`, `age`, `bonds`, `ideals`, `flaws`) "+ \
                     "VALUES ('"+\
                         person.name + "','" + \
                         person.city + "','" + \
@@ -85,13 +85,15 @@ def storePerson(person, createNew):
                         person.stats['chr'] + "','" + \
                         person.bio + "','" + \
                         person.race + "','" + \
-                        person.alignment + "','" + \
                         person.sex + "','" + \
-                        person.age + "');"
-            print(createNew)
-            print(type(createNew))
+                        person.age + "','" + \
+                        person.bonds + "','" + \
+                        person.ideals + "','" + \
+                        person.flaws + "');"
+
             if(not createNew):
                 query = query.replace("INSERT", "REPLACE")
+
             with connection.cursor() as cursor:
                 print(query)
                 cursor.execute(query)
@@ -152,9 +154,11 @@ def queryPerson(name):
                         person.stats[key] = db[i+3]
                     person.bio = db[9]
                     person.race = db[10]
-                    person.alignment = db[11]
-                    person.sex = db[12]
-                    person.age = db[13]
+                    person.sex = db[11]
+                    person.age = db[12]
+                    person.bonds = db[13]
+                    person.ideals = db[14]
+                    person.flaws = db[15]
     except Error as e:
         print(e)
     return person
